@@ -14,3 +14,6 @@
 
 - name: create docker container
   command: docker run -dit --name {{ docker_name }} --hostname {{ docker_name }} --ip {{docker_network_ip }} -p {{ docker_network_port }} --net {{ docker_network }} --add-host=puppet:192.168.200.50 {{docker_image }} /bin/bash
+
+- name: create docker volume
+  command: docker volume create --name {{ volume_name }}
