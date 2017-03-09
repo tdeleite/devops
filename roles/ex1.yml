@@ -1,0 +1,28 @@
+---
+
+- name: Provisionar o ambiente de Dev
+  hosts: docker
+
+  roles:
+   - { role: 'docker_network',
+       network_name: 'dev-network2',
+       subnet: '169.169.0.0/16'
+     }
+   - { role: 'docker_instances',
+       docker_environment: 'dev',
+       docker_name: 'backend-dev1',
+       docker_network: 'dev-network2',
+       docker_network_ip: '169.169.3.12',
+       docker_network_port: '28989:8989',
+       docker_type: 'normal',
+       docker_image: 'centos'
+     }
+   - { role: 'docker_instances',
+       docker_environment: 'dev',
+       docker_name: 'backend-dev2',
+       docker_network: 'dev-network2',
+       docker_network_ip: '169.169.4.13',
+       docker_network_port: '18989:7001',
+       docker_type: 'normal',
+       docker_image: 'centos'
+     }
